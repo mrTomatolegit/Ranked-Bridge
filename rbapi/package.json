@@ -1,0 +1,10 @@
+{
+    "name": "rbapi",
+    "version": "1.0.0",
+    "main": "index.js",
+    "dependencies": {
+        "hypixel": "^1.0.3",
+        "sqlite3": "^4.2.0",
+        "request": "^2.88.2"
+    }
+}

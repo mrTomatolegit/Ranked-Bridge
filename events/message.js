@@ -26,7 +26,7 @@ module.exports = (client, message) => {
     const cmd = commandManager.commands.get(command) || commandManager.commands.get(alias)
 
     if (cmd) {
-        console.log(`${message.author.tag} &${message.author.id} => ${command}`)
+        client.emit("commandRun", message)
         cmd.run(client, message, args)
     } else {
         message.reply(`Invalid command! Run \`${client.config.prefix}help\` to get a list of all available commands.`);
