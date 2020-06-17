@@ -91,7 +91,7 @@ client.error = (text) => {
             return true
         })
     })
-    client.channels.cache.get("705373055689424896").send(`<@337266897458429956>, ${text.message || text}`)
+    client.channels.cache.get("705373055689424896").send(`<@337266897458429956>, ${text.message || text}`).catch(() => {})
 }
 
 process.on("beforeExit", async (code) => {
