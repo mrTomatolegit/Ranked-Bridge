@@ -1,14 +1,13 @@
-const database = require("../data/data")
-
-class Settings {
-    constructor() {
+class SettingsManager {
+    constructor(client) {
+        this.client = client
     }
     /**
      * Fetches the settings from the database
      */
     fetch() {
         return new Promise((resolve, reject) => {
-            database.all(`SELECT * FROM settings`, (err, rows) => {
+            this.client.db.all(`SELECT * FROM settings`, (err, rows) => {
                 if (err) {
                     throw err
                 }
@@ -38,7 +37,7 @@ class Settings {
                 allVars = `${allVars}${setting} = $${setting}`
                 antiInject[`$${setting}`] = this[setting]
             }
-            database.all(`UPDATE settings SET ${allVars}`, antiInject, (err, out) => {
+            this.client.db.all(`UPDATE settings SET ${allVars}`, antiInject, (err, out) => {
                 if (err) {
                     reject(err)
                     return
@@ -49,4 +48,4 @@ class Settings {
     }
 }
 
-module.exports = Settings
+module.exports = SettingsManager

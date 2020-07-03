@@ -10,7 +10,7 @@ class HypixelKeyManager {
      * Returns the last index of the keys array
      */
     get maxIndex() {
-        return this.keys.length-1
+        return this.keys.length - 1
     }
 
     /**
@@ -19,13 +19,15 @@ class HypixelKeyManager {
     get length() {
         return this.keys.length
     }
-    
+
     /**
      * Adds an api key to the manager's array
      * @param {string} key - The hypixel api key to add 
      */
     add(key) {
-        const thing = new Hypixel({ key: key });
+        const thing = new Hypixel({
+            key: key
+        });
         const index = this.keys.push(thing)
         this.keymap.set(key, index)
     }
@@ -42,6 +44,7 @@ class HypixelKeyManager {
         }
     }
     /**
+     * @returns {string}
      * Returns the next key
      */
     next() {
@@ -52,6 +55,7 @@ class HypixelKeyManager {
         return this.keys[this.index]
     }
     /**
+     * @returns {string}
      * Returns the previous key
      */
     previous() {

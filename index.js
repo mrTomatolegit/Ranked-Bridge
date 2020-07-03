@@ -1,6 +1,8 @@
-require('dotenv').config()
-const Discord = require("discord.js");
-const client = new Discord.Client();
+require("dotenv").config()
+
+const RankedBridge = require("./rankedbridge")
+
+const client = new RankedBridge.Client("719789085706682378")
 
 const fs = require("fs");
 client.start = (reload) => {
@@ -93,10 +95,5 @@ client.error = (text) => {
     })
     client.channels.cache.get("705373055689424896").send(`<@337266897458429956>, ${text.message || text}`).catch(() => {})
 }
-
-process.on("beforeExit", async (code) => {
-    client.destroy()
-    client.log("Process exited with code " + code)
-})
 
 client.login(process.env.token)

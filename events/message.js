@@ -9,14 +9,6 @@ module.exports = (client, message) => {
 
     if (!message.content.startsWith(client.config.prefix)) return 
 
-    if (message.author.id !== client.config.creatorID) {
-        if (!client.config.active) {
-            return
-        } else if (private && message.guild.id !== private) {
-            return
-        }
-    }
-
     const args = message.content.slice(client.config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase()
 

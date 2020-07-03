@@ -1,8 +1,8 @@
 exports.load = (client, reload) => {
     const keys = require("../hypixelKeys.json")
     const request = require("request")
-    const rbapi = require("../rbapi")
-    client.keymanager = new rbapi.HypixelKeyManager()
+    const RankedBridge = require("../rankedbridge")
+    client.keymanager = new RankedBridge.HypixelKeyManager()
 
     for (key of keys) {
         request(`https://api.hypixel.net/key?key=${key}`, (err, response, body) => {

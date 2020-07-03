@@ -1,4 +1,5 @@
 exports.load = (client, reload) => {
+    client.randomLeaders = new Map()
     return new Promise(async resolve => {
         if (reload) {
             delete client.config
@@ -6,10 +7,6 @@ exports.load = (client, reload) => {
         }
         console.log("Loading config file")
         client.config = require(`../config.json`)
-        const rbapi = require("../rbapi")
-        const events = require('events')
-        client.events = new events.EventEmitter()
-        client.settings = await new rbapi.Settings().fetch()
         resolve()
     })
 }
